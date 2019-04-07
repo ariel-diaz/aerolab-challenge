@@ -1,14 +1,75 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: -apple-system, BlinkMacSystemFont, "SourceSanPro-Regular" ,"Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background:#f9f9f9;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+select {
+  padding: 10px;
+  border-radius: 100px;
+  border: none;
+  margin-left: 10px;
+  
+}
+
+select:focus {
+    outline:0;
+}
+
+.productName {
+  font-family: "SourceSansPro-Regular";
+  font-size:18px;
+  color:#616161;
+  letter-spacing:-0.04px;
+  text-align:left;
+}
+
+
+.productCategory {
+  font-family:"SourceSansPro-Regular";
+  font-size:16px;
+  color:#a3a3a3;
+  letter-spacing:-0.04px;
+  text-align:left;
+}
+
+.activeFilter {
+  background:#0ad4fa !important;
+  color: #ffffff !important;
+
+}
+
+.coin {
+  width: 1vw;
+  height: auto;
+}
+
+.input-range__slider {
+  background: #ffffff !important;
+  border: 1px solid #f9f9f9 !important;
+}
+
+.input-range__track--active {
+  background: #ff6d00 !important;
+}
+
+.input-range__label-container {
+  font-size: "SourceSansPro-Bold";
+}
+
