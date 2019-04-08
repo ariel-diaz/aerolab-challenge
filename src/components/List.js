@@ -14,7 +14,16 @@ const ContainerCards = styled.ul`
 const ItemCard = styled.li`
     display: flex;
     justify-content: center;
-    width: 25%;
+    width: calc(25% - 0.5rem);
+    min-width: 276px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    padding: 0;
+
+    @media (min-width: 1500px) {
+        min-width: 270px;
+        width: calc(20% - 1rem);
+      }
 `;
 
 const List = ({ list }) => {

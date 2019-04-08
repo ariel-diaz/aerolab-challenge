@@ -17,8 +17,8 @@ const Footer = () => {
 
     return (
         <WrapperFooter>
-        <TotalProducts  />
-        <Paginate />
+            <TotalProducts  />
+            <Paginate />
         </WrapperFooter>
     )
 

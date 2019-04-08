@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-// import InputRange from 'react-input-range';
 import styled from 'styled-components';
 import { Button, WrapperFilter } from '../utils/styles';
 import { Context } from '../context/Context';
@@ -16,6 +15,14 @@ const WrapperFilters = styled.div`
     align-items: center;
     `;
 
+const BoxFilters = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    align-items: center;
+    justify-content: space-between;
+`;
+
 
 const BtnFilter = styled(Button)`
     background-color: #ededed;
@@ -28,15 +35,11 @@ const BtnFilter = styled(Button)`
 `;
 
 
-const WrapperRange = styled.div`
-    width: 25%;
-`;
 
 
 
 
-
-const Filtros = () => {
+const Filters = () => {
     const { state, dispatch } = useContext(Context);
     const { categories, filters } = state;
 
@@ -45,7 +48,7 @@ const Filtros = () => {
         <WrapperFilters>
             <TotalProducts />
 
-            <div className="filters">
+            <BoxFilters>
                 <WrapperFilter>
                     <h3> Category: </h3>
                     <select onChange={(e) => dispatch(handleChangeCategorie(e.target.value))}>
@@ -55,26 +58,16 @@ const Filtros = () => {
                     </select>
                 </WrapperFilter>
 
-                {/* <WrapperRange>
-                        <InputRange
-                            maxValue={2000}
-                            minValue={0}
-                            formatLabel={value => `${value} points`}
-                            value={filters.range}
-                            step={100}
-                            onChange={(value) => dispatch(handleChangeRange(value))} />
-                    </WrapperRange> */}
-
                 <WrapperFilter>
                     <h3> Sort by: </h3>
                     <BtnFilter onClick={() => dispatch(handleChangePrice('Lowest'))} className={filters.price === "Lowest" ? "activeFilter" : ""}> Lowest price </BtnFilter>
                     <BtnFilter onClick={() => dispatch(handleChangePrice('Highest'))} className={filters.price === "Highest" ? "activeFilter" : ""}> Highest price </BtnFilter>
                 </WrapperFilter>
 
-            
-                   <Paginate />
-           
-            </div>
+
+                <Paginate />
+
+            </BoxFilters>
 
 
         </WrapperFilters>
@@ -86,4 +79,4 @@ const Filtros = () => {
 
 
 
-export default Filtros;
+export default Filters;

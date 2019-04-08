@@ -3,7 +3,7 @@
 const INITIAL = "INITIAL";
 const LOADING_FINISH = "LOADING_FINISH";
 const SET_RANGE_PRICE = "SET_RANGE_PRICE";
-const SET_CATEGORIE = "SET_CATEGORIE";
+const SET_CATEGORY = "SET_CATEGORY";
 const SET_SORT_PRICE = "SET_SORT_PRICE";
 const UPDATE_USER_POINTS = "UPDATE_USER_POINTS";
 const UPDATE_LIST_RESULT = "UPDATE_LIST_RESULT";
@@ -17,7 +17,7 @@ const PAGE_SIZE = 10;
 export const getInitialData = data => ({ type: INITIAL, data });
 export const setLoadingFalse = () => ({ type: LOADING_FINISH });
 export const handleChangeRange = data => ({ type: SET_RANGE_PRICE, data });
-export const handleChangeCategorie = data => ({ type: SET_CATEGORIE, data })
+export const handleChangeCategorie = data => ({ type: SET_CATEGORY, data })
 export const handleChangePrice = data => ({ type: SET_SORT_PRICE, data });
 export const updateUserPoints = data => ({ type: UPDATE_USER_POINTS, data });
 export const updateListResult = data => ({ type: UPDATE_LIST_RESULT, data });
@@ -63,7 +63,7 @@ export const reducer = (state, action) => {
             pagination = Object.assign({}, state.filters, { pagination: newPagination })
             return Object.assign({}, state, { filters: pagination });
 
-        case SET_CATEGORIE:
+        case SET_CATEGORY:
             newFilter = Object.assign({}, state.filters, { category: action.data })
             return Object.assign({}, state, { filters: newFilter });
 

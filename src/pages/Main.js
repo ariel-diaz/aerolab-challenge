@@ -3,7 +3,7 @@ import List from '../components/List';
 import 'react-input-range/lib/css/index.css';
 import { Context, paginateResult } from '../context/Context';
 import {updateListResult , cleanPagination } from '../context/reducer';
-import Filtros from './../components/Filtros';
+import Filters from './../components/Filters';
 import Footer from './../components/Footer';
 import Loading from './../components/Loading';
 
@@ -28,10 +28,6 @@ const Main = () => {
             listClean = listClean.filter(x => x.category === filters.category);
             changeCategorieOrRange = true;
         }
-
-
-        // listClean = listClean.filter(x => x.cost >= filters.range.min && x.cost < filters.range.max);
-
 
         if(filters.price !== "") {
             if(filters.price === 'Lowest') {
@@ -58,7 +54,7 @@ const Main = () => {
             {isLoading ?
                 <Loading />
                 : <>
-                    <Filtros />
+                    <Filters />
                     <List list={listResult.result} user={user} />
                     <Footer />
                 </>}

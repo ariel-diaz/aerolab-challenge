@@ -6,7 +6,6 @@ import Main from './pages/Main';
 import BannerImg from './assets/images/header-x2.png';
 import { ContextProvider } from './context/Context';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Detalle from './pages/Detalle';
 import HistoryUser from './components/HistoryUser';
 
 
@@ -48,7 +47,6 @@ const App = () => {
           <WrapperContent>
             <Route exact path="/" component={Main} />
             <Route path="/history" component={HistoryUser} />
-            <Route path="/detallePedido" component={Detalle} />
           </WrapperContent>
       </ContextProvider>
     </Router>

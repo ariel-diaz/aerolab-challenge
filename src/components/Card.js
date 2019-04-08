@@ -14,19 +14,17 @@ const WrapperCard = styled.div`
     position: relative;
     background:#ffffff;
     box-shadow:2px 2px 4px 0 rgba(0,0,0,0.10);
-    margin-bottom: 20px;
     padding: 2vh;
     transition-duration: 0.6s;
-    min-width: 276px;
-    min-height: 276px;
+    min-width: 250px;
+    min-height: 250px;
+    margin-bottom: 20px;
 
     :hover {
         top: -10px;
         -webkit-box-shadow: 17px 23px 23px -19px rgba(0,0,0,0.67);
         -moz-box-shadow: 17px 23px 23px -19px rgba(0,0,0,0.67);
         box-shadow: 17px 23px 23px -19px rgba(0,0,0,0.67);
-
-        
     }
 `;
 
@@ -128,7 +126,32 @@ const Loading = styled.img`
     height: 18px;
 `;
 
+const CoinImg = styled.img`
+    margin-left: 10px;
+`;
 
+
+const ProductName = styled.span`
+    font-family: "Source Sans Pro";
+    font-size:18px;
+    color:#616161;
+    letter-spacing:-0.04px;
+    text-align:left;
+`;
+const ProductCategory = styled.span`
+    font-family:"Source Sans Pro";
+    font-size:16px;
+    color:#a3a3a3;
+    letter-spacing:-0.04px;
+    text-align:left;
+`;
+
+const Coin = styled.img`
+    width: 18px;
+    height: 18px;
+`;
+
+  
 
 
 const Card = ({ product, user }) => {
@@ -158,12 +181,12 @@ const Card = ({ product, user }) => {
                     (isHover ? <BtnBuyBlue /> : <BtnBuy />) :
                     <MessageCoin>
                         <TextCoin> You need {pointsMissing} </TextCoin>
-                        <img className="coin" src={coin} alt="Coins" />
+                        <Coin className="coin" src={coin} alt="Coins" />
                     </MessageCoin>}
             </WrapperImage>
             <WrapperDescription>
-                <span className="productCategory"> {product.category}</span>
-                <span className="productName"> {product.name} </span>
+                <ProductCategory> {product.category} </ProductCategory>
+                <ProductName> {product.name}  </ProductName>
             </WrapperDescription>
 
 
@@ -171,7 +194,7 @@ const Card = ({ product, user }) => {
                 <WrapperCardHover>
                     <WrapperPrice>
                         <TextPrice> {product.cost} </TextPrice>
-                        <img className="coinCard" src={coin} alt="Coins" />
+                        <CoinImg src={coin} alt="Coins" />
                     </WrapperPrice>
                     {canBuy &&
                          <ButtonRedeem

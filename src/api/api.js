@@ -1,10 +1,7 @@
 import axios from 'axios';
 
-
-
-const AUTH_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2E3Y2QzY2U3MDdjMzAwNmRmNTM4MWMiLCJpYXQiOjE1NTQ1MDA5MjR9.Pcuy5KrITnw6HyMxFiXs9OAt5qJNxAyCHM8UZtnIxwU';
 const API = 'https://aerolab-challenge.now.sh';
-axios.defaults.headers.common['Authorization'] = `Bearer ${AUTH_TOKEN}`; 
+axios.defaults.headers.common['Authorization'] = `Bearer ${process.env.REACT_APP_TOKEN}`; 
 
 
 

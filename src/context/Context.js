@@ -38,10 +38,6 @@ const ContextProvider = ({children}) => {
         const filters = {
             price: '',
             category: '',
-            range: {
-                min: 0,
-                max: user.points
-            },
             pagination: {
                 pageSize: 10,
                 page: 1

@@ -1,15 +1,33 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import { Context } from '../context/Context';
+import styled from 'styled-components';
 
+
+const WrapperTotalProducts = styled.div`
+    font-family: "Source Sans Pro";
+    display:flex;
+    flex-direction: column;
+    margin-top: 20px;
+    font-size: 18px;
+`;
+
+const TextProducts = styled.span`
+    font-size: 18px;
+`;  
+
+const TextPage= styled.em`
+`;
+
+  
 const TotalProducts = () => {
     const { state } = useContext(Context);
-    const { listResult , filters} = state;
+    const { listResult, filters } = state;
 
     return (
-        <div className="container-total-products">
-            <span>  {listResult.result.length} of {listResult.totalCount} products </span>
-            <em> Page {filters.pagination.page} </em>
-        </div>
+        <WrapperTotalProducts>
+            <TextProducts>  {listResult.result.length} of {listResult.totalCount} products </TextProducts>
+            <TextPage> Page {filters.pagination.page} </TextPage>
+        </WrapperTotalProducts>
     )
 }
 

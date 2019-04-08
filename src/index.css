@@ -43,65 +43,11 @@ select:focus {
     outline:0;
 }
 
-.productName {
-  font-family: "Source Sans Pro";
-  font-size:18px;
-  color:#616161;
-  letter-spacing:-0.04px;
-  text-align:left;
-}
-
-
-.productCategory {
-  font-family:"Source Sans Pro";
-  font-size:16px;
-  color:#a3a3a3;
-  letter-spacing:-0.04px;
-  text-align:left;
-}
 
 .activeFilter {
   background:#0ad4fa !important;
   color: #ffffff !important;
 
-}
-
-.coin {
-  width: 1vw;
-  height: auto;
-}
-
-.input-range__slider {
-  background: #ffffff !important;
-  border: 1px solid #f9f9f9 !important;
-}
-
-.input-range__track--active {
-  background: #ff6d00 !important;
-}
-
-.input-range__label-container {
-  font-size: "Source Sans Pro";
-}
-
-
-.container-total-products {
-  font-family: "Source Sans Pro";
-  display:flex;
-  flex-direction: column;
-  margin-top: 20px;
-}
-
-.container-total-products > span {
-  font-size: 18px;
-}
-
-.filters {
-  display: flex;
-  flex-direction: row;
-  width: 60%;
-  align-items: center;
-  justify-content: space-between;
 }
 
 
@@ -121,7 +67,4 @@ select:focus {
   background: #555; 
 }
 
-.coinCard {
-  margin-left: 10px;
-}
 
