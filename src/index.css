@@ -84,12 +84,6 @@ select:focus {
   font-size: "Source Sans Pro";
 }
 
-.item-card {
-  display: flex;
-  justify-content: center;
-  width: 20%;
-  min-width: 290px;
-}
 
 .container-total-products {
   font-family: "Source Sans Pro";
@@ -131,39 +125,3 @@ select:focus {
   margin-left: 10px;
 }
 
-
-.history-price {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: 20px;
-}
-
-.history-box {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.history-coin {
-  margin-left: 10px;
-}
-
-.history-description {
-  margin-left: 20px;
-  border-left: 2px solid #ededed;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-}
-
-
-.history-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.history-image > img {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
-}

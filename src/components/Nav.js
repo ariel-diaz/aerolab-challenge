@@ -77,7 +77,7 @@ const Nav = () => {
             </NavbarLeft>
             {!isLoading &&
                 <NavbarRight>
-                    <UserName className="animated fadeIn"> {user.name}</UserName>
+                    <UserName> {user.name}</UserName>
                   
                   {(user.redeemHistory.length > 0)
                      && <Link to={'history'}> 

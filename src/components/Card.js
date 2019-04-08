@@ -17,6 +17,8 @@ const WrapperCard = styled.div`
     margin-bottom: 20px;
     padding: 2vh;
     transition-duration: 0.6s;
+    min-width: 276px;
+    min-height: 276px;
 
     :hover {
         top: -10px;
@@ -131,18 +133,18 @@ const Loading = styled.img`
 
 const Card = ({ product, user }) => {
     const [isHover, setIsHover] = useState(false);
-    const [isReedem, setReedem] = useState(false);
+    const [isRedeem, setRedeem] = useState(false);
     const {dispatch} = useContext(Context)
     const canBuy = product.cost <= user.points;
     const pointsMissing = product.cost - user.points;
 
     const reedemItem = (id, cost) => {
-        setReedem(true);
+        setRedeem(true);
         reedemProduct(id).then(resp => {
            if(resp.status === 200) {
                let newUserPoints = user.points - cost; 
                dispatch(updateUserPoints(newUserPoints));
-               setReedem(false);
+               setRedeem(false);
            }
         });
     }
@@ -174,9 +176,9 @@ const Card = ({ product, user }) => {
                     {canBuy &&
                          <ButtonRedeem
                           onClick={() => reedemItem(product._id, product.cost)}
-                          disabled={isReedem ? "disabled" : ""}
-                          > Reedem Now 
-                          {isReedem && <Loading src={imgLoading} />}
+                          disabled={isRedeem ? "disabled" : ""}
+                          > Redeem Now 
+                          {isRedeem && <Loading src={imgLoading} />}
                           </ButtonRedeem>}
                 </WrapperCardHover>
             }
