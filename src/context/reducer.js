@@ -21,8 +21,8 @@ export const handleChangeCategorie = data => ({ type: SET_CATEGORIE, data })
 export const handleChangePrice = data => ({ type: SET_SORT_PRICE, data });
 export const updateUserPoints = data => ({ type: UPDATE_USER_POINTS, data });
 export const updateListResult = data => ({ type: UPDATE_LIST_RESULT, data });
-export const setPage = data => ({type: SET_PAGE, data})
-export const cleanPagination = () => ({type: CLEAN_PAGINATION})
+export const setPage = data => ({type: SET_PAGE, data});
+export const cleanPagination = () => ({type: CLEAN_PAGINATION});
 
 
 // REDUCER WE
@@ -39,7 +39,7 @@ export const reducer = (state, action) => {
 
         case LOADING_FINISH:
             return Object.assign({}, state, { isLoading: false });
-        
+
         case CLEAN_PAGINATION:
             newPagination = { pageSize: PAGE_SIZE, page: 1 }
             pagination = Object.assign({}, state.filters, { pagination: newPagination })

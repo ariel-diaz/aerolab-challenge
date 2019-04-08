@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react'
 import List from '../components/List';
 import 'react-input-range/lib/css/index.css';
 import { Context, paginateResult } from '../context/Context';
-import {updateListResult , cleanPagination} from '../context/reducer';
+import {updateListResult , cleanPagination } from '../context/reducer';
 import Filtros from './../components/Filtros';
 import Footer from './../components/Footer';
 import Loading from './../components/Loading';
@@ -49,8 +49,6 @@ const Main = () => {
             const paginate = paginateResult(listClean, filters); 
             dispatch(updateListResult(paginate));
         }
-
-
     };
 
 
