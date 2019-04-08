@@ -16,6 +16,15 @@ const initialState = {
 const Context = React.createContext(initialState);
 
 
+ const paginateResult = (list, filters) => {   
+    const totalCount = list.length;
+    const totalPages = Math.ceil(list.length / filters.pagination.pageSize);
+    const result = list.slice(((filters.pagination.page - 1) * filters.pagination.pageSize),
+                                 filters.pagination.pageSize * filters.pagination.page);
+
+    return {result, totalPages, totalCount};
+}
+
 
 const ContextProvider = ({children}) => {
      const [state, dispatch] = useReducer(reducer, initialState);
@@ -23,8 +32,8 @@ const ContextProvider = ({children}) => {
 
     const initState = async () => {
         const [user, products] = await Promise.all([getUser(), getProducts()]);
-
         const categories = [...new Set(products.data.map(x => x.category))];
+        
 
         const filters = {
             price: '',
@@ -32,17 +41,23 @@ const ContextProvider = ({children}) => {
             range: {
                 min: 0,
                 max: user.points
+            },
+            pagination: {
+                pageSize: 10,
+                page: 1
             }
         }
-        
+
+        const optionPaginate = paginateResult(products.data, filters);
+
         const newState = Object.assign({}, state,
              { user, 
                products: products.data, 
-               listResult: products.data,
+               listResult: optionPaginate,
                categories,
                filters
             });
-
+        
         dispatch(getInitialData(newState));
 
         // aldope
@@ -63,4 +78,4 @@ const ContextProvider = ({children}) => {
 
 
 
-export {Context, ContextProvider} ;
+export {Context, ContextProvider , paginateResult} ;

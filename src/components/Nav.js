@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components';
 import Logo from '../assets/images/aerolab-logo.svg';
 import Coin from '../assets/icons/coin.svg';
@@ -25,8 +25,8 @@ const NavbarLeft = styled.div`
 `;
 
 const UserName = styled.span`
-    font-family:SourceSansPro-Regular;
-    font-size:24px;
+    font-family: "Source Sans Pro";
+    font-size: 18px;
     color:#616161;
     text-align:left;
     margin-right: 10px;
@@ -43,8 +43,8 @@ const Points = styled.div`
 `;
 
 const PointText = styled.span`
-    font-family:SourceSansPro-Regular;
-    font-size:24px;
+    font-family: "Source Sans Pro";
+    font-size: 18px;
     color:#616161;
     text-align:left;
     padding: 0 20px;

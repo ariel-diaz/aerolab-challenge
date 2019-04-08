@@ -72,7 +72,7 @@ const Card = ({product , reedemProduct, user }) => {
         <WrapperCard>
             <WrapperImage>
                 <img src={product.img.url} alt={product.name}/>
-                {canBuy ? <BtnBuy onClick={() => reedemProduct(product._id)} /> : 
+                {canBuy ? <BtnBuy onClick={() => reedemProduct(product._id, product.cost)} /> : 
                 <MessageCoin> 
                     <TextCoin> You need {pointsMissing} </TextCoin>
                     <img className="coin" src={coin} alt="Coins" />

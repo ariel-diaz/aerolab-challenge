@@ -11,15 +11,15 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${AUTH_TOKEN}`;
 export const getProducts = async () => await axios.get(`${API}/products`);
 
 
-export const getUser = async () => {
-    const resultUser = await axios.get(`${API}/user/me`)
-    const resultHistory = await getUserHistory();
-    const user = resultUser.data;
-    const userWithReedem = Object.assign({},user, { redeemHistory: resultHistory.data});
-    return userWithReedem;
-}
-export const getUserHistory = async () => await axios.get(`${API}/user/history`);
 
+
+export const getUser = async () => {
+    const [resultUser, resultHistory] = await Promise.all([axios.get(`${API}/user/me`), getUserHistory()]);
+    const user = resultUser.data;
+    return Object.assign({}, user, { redeemHistory: resultHistory.data});
+}
+
+export const getUserHistory = async () => await axios.get(`${API}/user/history`);
 
 // export const getCategories = (list) => {
 //    return [...new Set(list.map(x => x.category))];

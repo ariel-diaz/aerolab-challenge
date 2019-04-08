@@ -1,13 +1,13 @@
-import React, { useContext, useEffect } from 'react';
-import arrowLeft from '../assets/icons/arrow-left.svg';
-import arrowRight from '../assets/icons/arrow-right.svg';
+import React, { useContext } from 'react';
 import InputRange from 'react-input-range';
 import styled from 'styled-components';
 import { Button } from '../utils/styles';
 import { Context } from '../context/Context';
 import { handleChangeRange, handleChangeCategorie, handleChangePrice } from '../context/reducer';
+import Paginate from './Paginate';
+import TotalProducts from './TotalProducts';
 
-const WrapperFiltros = styled.div`
+const WrapperFilters = styled.div`
     display:flex;
     flex-direction: row;
     justify-content: space-between;
@@ -16,26 +16,13 @@ const WrapperFiltros = styled.div`
     align-items: center;
     `;
 
-const BtnArrowLeft = styled(Button)`
-    background: url(${arrowLeft}) no-repeat;
-    height: 50px;
-    width: 50px;
-`;
-
-const BtnArrowRight = styled(Button)`
-    background: url(${arrowRight}) no-repeat;
-    height: 50px;
-    width: 50px;
-    margin-left: 10px;
-`;
-
 
 const BtnFilter = styled(Button)`
     background-color: #ededed;
     border-radius: 100px;
     padding: 10px 20px;
-    font-family:SourceSansPro-Regular;
-    font-size:3vh;
+    font-family: "Source Sans Pro";
+    font-size: 2vh;
     color:#a3a3a3;
     margin-left: 2vh;
 `;
@@ -46,51 +33,56 @@ const WrapperRange = styled.div`
 `;
 
 
+const WrapperFilter = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: "Source Sans Pro";
+`;
+
+
+
+
 const Filtros = () => {
     const { state, dispatch } = useContext(Context);
-    const { user, products, filters, categories, listResult } = state;
+    const { categories, filters } = state;
 
 
     return (
-        <WrapperFiltros>
-            <div>
-                <span>  {listResult.length} of {products.length} products </span>
-            </div>
+        <WrapperFilters>
+            <TotalProducts />
 
-            {
-                user ? <WrapperRange>
-                    <InputRange
-                        maxValue={3000}
-                        minValue={0}
-                        formatLabel={value => `${value} points`}
-                        value={filters.range}
-                        step={100}
-                        onChange={(value) => dispatch(handleChangeRange(value))} />
-                </WrapperRange>
-                    : ""
-            }
-
-            <div>
-                <label> Categoria: </label>
-                {categories && categories.length > 0
-                    ? <select onChange={dispatch((e) => handleChangeCategorie(e.target.value))}>
-                        <option value=""> Todas </option>
-                        {categories.map((c, i) => <option key={i} value={c}>{c}</option>)}
+            <div className="filters">
+                <WrapperFilter>
+                    <h3> Category: </h3>
+                    <select onChange={(e) => dispatch(handleChangeCategorie(e.target.value))}>
+                        <option value=""> All </option>
+                        {categories.map((categorie, i) =>
+                            <option key={i} value={categorie}>{categorie}</option>)}
                     </select>
-                    : ""}
+                </WrapperFilter>
+
+                {/* <WrapperRange>
+                        <InputRange
+                            maxValue={2000}
+                            minValue={0}
+                            formatLabel={value => `${value} points`}
+                            value={filters.range}
+                            step={100}
+                            onChange={(value) => dispatch(handleChangeRange(value))} />
+                    </WrapperRange> */}
+
+                <WrapperFilter>
+                    <h3> Sort by </h3>
+                    <BtnFilter onClick={() => dispatch(handleChangePrice('Lowest'))} className={filters.price === "Lowest" ? "activeFilter" : ""}> Lowest price </BtnFilter>
+                    <BtnFilter onClick={() => dispatch(handleChangePrice('Highest'))} className={filters.price === "Highest" ? "activeFilter" : ""}> Highest price </BtnFilter>
+                </WrapperFilter>
+
+                <Paginate />
             </div>
 
-            <div>
-                <BtnFilter onClick={() => dispatch(handleChangePrice('Lowest'))} className={filters.price === "Lowest" ? "activeFilter" : ""}> Lowest price </BtnFilter>
-                <BtnFilter onClick={() => dispatch(handleChangePrice('Highest'))} className={filters.price === "Highest" ? "activeFilter" : ""}> Highest price </BtnFilter>
-            </div>
 
-            <div>
-                <BtnArrowLeft />
-                <BtnArrowRight />
-            </div>
-
-        </WrapperFiltros>
+        </WrapperFilters>
 
     )
 

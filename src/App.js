@@ -10,14 +10,13 @@ import Detalle from './pages/Detalle';
 import HistoryUser from './components/HistoryUser';
 
 const Wrapper = styled.div`
-    margin: 0 80px;
-    
+    margin: 0 40px;
 `;
 
 
 const Banner = styled.div`
       background: url(${BannerImg}) 60% no-repeat;
-     background-size: cover;
+      background-size: cover;
         height: 40vh;
         width: 100%;
         display: flex;
@@ -25,10 +24,15 @@ const Banner = styled.div`
 `;
 
 const Title = styled.h1`
-    font-family: SourceSansPro-Bold;
+    font-family: "Source Sans Pro";
+    font-weight: 600;
     color: #ffffff;
     font-size: 5vw;
     padding: 0 10vh;
+`;
+
+const WrapperContent = styled.div`
+   margin: 0 80px;
 `;
 
 
@@ -38,16 +42,18 @@ const App = () => {
     <Router>
       <ContextProvider>
         <Wrapper>
-          <Header>
-            <Nav />
-            <Banner>
-              <Title>Electronics</Title>
-            </Banner>
-          </Header>
+            <Header>
+              <Nav />
+              <Banner>
+                <Title>Electronics</Title>
+              </Banner>
+            </Header>
 
-          <Route exact path="/" component={Main} />
-          <Route path="/history" component={HistoryUser} />
-          <Route path="/detallePedido" component={Detalle} />
+          <WrapperContent>
+            <Route exact path="/" component={Main} />
+            <Route path="/history" component={HistoryUser} />
+            <Route path="/detallePedido" component={Detalle} />
+          </WrapperContent>
         </Wrapper>
       </ContextProvider>
     </Router>

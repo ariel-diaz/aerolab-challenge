@@ -5,7 +5,8 @@ import { Context } from '../context/Context';
 
 
 const HistoryUser = () => {
-    const {user} = useContext(Context);
+    const { state} = useContext(Context);
+    const {user} = state;
 
     return (
         <ul>

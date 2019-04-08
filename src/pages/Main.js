@@ -1,8 +1,10 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import List from '../components/List';
 import 'react-input-range/lib/css/index.css';
-import { Context } from '../context/Context';
+import { Context, paginateResult } from '../context/Context';
+import {updateListResult , cleanPagination} from '../context/reducer';
 import Filtros from './../components/Filtros';
+import Footer from './../components/Footer';
 
 
 
@@ -10,68 +12,45 @@ import Filtros from './../components/Filtros';
 const Main = () => {
 
     const { state, dispatch } = useContext(Context);
-    const { user, products, categories, filters, listResult, isLoading } = state;
+    const { user, isLoading, listResult, products, filters } = state;
 
-    // const [listResult, setListResult] = useState([]);
-    // // const [categories, setCategories] = useState([]);
-    // const [filters, setFilters] = useState(initialFilters || initialFilters2);
-
-
-    // useEffect(() => {
-    //     if(products && products.length > 0) {
-    //         setFiltersToList();
-    //     }
-
-    // }, [filters])
-
-    // useEffect(() => {
-    //     if(products && products.length > 0) {
-    //         setFiltersToList();
-    //     }
-
-    // }, [])
-
-    // const getProductsList = async () => {
-    //     // const result =  await getProducts();
-    //     // const listCategories = getCategories(products);
-    //     // setCategories(listCategories);
-    //     setFiltersToList();
-    // }
-
-    // const handleChangeCategorie = (e) => {
-    //     const newFilters = Object.assign({}, filters, {category: e.target.value});
-    //     setFilters(newFilters);
-    // }
+    useEffect(() => {
+            setFiltersToList();
+    }, [filters])
 
 
-    // const handleChangeRange = (value) => {
-    //     const newFilters = Object.assign({}, filters, {range: {max: value.max, min: value.min} })
-    //     setFilters(newFilters)
+    const setFiltersToList = () => {
+        let changeCategorieOrRange = false;
+        let listClean = products.slice(0);
 
-    // } 
-
-
-    // const setFiltersToList = () => {
-    //     let listClean = products.slice(0);
-
-    //     if(filters.category !== "") {
-    //         listClean = listClean.filter(x => x.category === filters.category);
-    //     }
+        if(filters.category !== "") {
+            listClean = listClean.filter(x => x.category === filters.category);
+            changeCategorieOrRange = true;
+        }
 
 
-    //     listClean = listClean.filter(x => x.cost >= filters.range.min && x.cost < filters.range.max);
+        // listClean = listClean.filter(x => x.cost >= filters.range.min && x.cost < filters.range.max);
 
 
-    //     if(filters.price !== "") {
-    //         if(filters.price === 'Lowest') {
-    //             listClean = listClean.sort( (a,b) => a.cost - b.cost )
-    //         } else {
-    //             listClean = listClean.sort( (a,b) => b.cost - a.cost )
-    //         }
-    //     }
+        if(filters.price !== "") {
+            if(filters.price === 'Lowest') {
+                listClean = listClean.sort( (a,b) => a.cost - b.cost )
+            } else {
+                listClean = listClean.sort( (a,b) => b.cost - a.cost )
+            }
+        }
 
-    //     setListResult(listClean)
-    // };
+        if(changeCategorieOrRange) {
+            dispatch(cleanPagination());
+        }
+        
+        if(!isLoading) {
+            const paginate = paginateResult(listClean, filters); 
+            dispatch(updateListResult(paginate));
+        }
+
+
+    };
 
 
 
@@ -81,7 +60,8 @@ const Main = () => {
                 "Loading..."
                 : <>
                     <Filtros />
-                    <List list={listResult} user={user} />
+                    <List list={listResult.result} user={user} />
+                    <Footer />
                 </>}
 
         </>
