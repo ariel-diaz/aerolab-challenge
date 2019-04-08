@@ -14,28 +14,19 @@ const ContainerCards = styled.ul`
 
 const List = ({ list }) => {
     const { state } = useContext(Context);
-    const { user, isLoading } = state;
+    const { user } = state;
 
 
     return (
-        <>
+        <ContainerCards>
             {
-                isLoading
-                    ? <Loading />
-                    : (
-                        <ContainerCards>
-                            {
-                                list && list.length > 0 ?
-                                    list.map((p, i) => <li className="item-card" key={i}>
-                                        <Card product={p} user={user} />
-                                    </li>)
-                                    : <h3> No results found </h3>
-                            }
-                        </ContainerCards>
-                    )
+                list && list.length > 0 ?
+                    list.map((p, i) => <li className="item-card" key={i}>
+                        <Card product={p} user={user} />
+                    </li>)
+                    : <h3> No results found </h3>
             }
-        </>
-
+        </ContainerCards>
 
     )
 }
