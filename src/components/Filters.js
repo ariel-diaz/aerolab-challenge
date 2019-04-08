@@ -13,6 +13,13 @@ const WrapperFilters = styled.div`
     padding: 20px 0;
     border-bottom: 1px solid #d9d9d9;
     align-items: center;
+
+    @media (max-width: 800px) {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+      }
+
     `;
 
 const BoxFilters = styled.div`
@@ -21,6 +28,12 @@ const BoxFilters = styled.div`
     width: 60%;
     align-items: center;
     justify-content: space-between;
+
+    @media (max-width: 800px) {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+      }
 `;
 
 
@@ -29,9 +42,9 @@ const BtnFilter = styled(Button)`
     border-radius: 100px;
     padding: 10px 20px;
     font-family: "Source Sans Pro";
-    font-size: 2vh;
+    font-size: 18px;
     color:#a3a3a3;
-    margin-left: 2vh;
+    margin-left: 10px;
 `;
 
 

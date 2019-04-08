@@ -8,6 +8,10 @@ const ContainerCards = styled.ul`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+
+    @media (max-width: 800px) {
+        justify-content: center;
+      }
 `;
 
 

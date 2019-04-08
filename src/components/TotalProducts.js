@@ -9,6 +9,12 @@ const WrapperTotalProducts = styled.div`
     flex-direction: column;
     margin-top: 20px;
     font-size: 18px;
+
+    @media (max-width: 800px) {
+        flex-direction: row-reverse;
+        width: 100%;
+        justify-content: space-between;
+      }
 `;
 
 const TextProducts = styled.span`
