@@ -18,3 +18,10 @@ export const Button = styled.button`
        outline:0;
     }
 `;
+
+export const WrapperFilter = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-family: "Source Sans Pro";
+`;

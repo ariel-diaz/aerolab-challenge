@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import arrowLeft from '../assets/icons/arrow-left.svg';
 import arrowRight from '../assets/icons/arrow-right.svg';
 import { setPage } from '../context/reducer';
+import {  WrapperFilter } from '../utils/styles';
 
 const BtnArrowLeft = styled(Button)`
     background: url(${arrowLeft}) no-repeat;
@@ -26,10 +27,10 @@ const Paginate = () => {
     return (
         <>
             {listResult.totalPages > 1 &&
-                <>
+                <WrapperFilter>
                     {filters.pagination.page > 1 && <BtnArrowLeft onClick={() => dispatch(setPage(-1))} />}
                     {filters.pagination.page < listResult.totalPages && <BtnArrowRight onClick={() => dispatch(setPage(1))} />}
-                </>
+                </WrapperFilter>
             }
         </>
     )

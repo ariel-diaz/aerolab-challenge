@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import InputRange from 'react-input-range';
+// import InputRange from 'react-input-range';
 import styled from 'styled-components';
-import { Button } from '../utils/styles';
+import { Button, WrapperFilter } from '../utils/styles';
 import { Context } from '../context/Context';
-import { handleChangeRange, handleChangeCategorie, handleChangePrice } from '../context/reducer';
+import { handleChangeCategorie, handleChangePrice } from '../context/reducer';
 import Paginate from './Paginate';
 import TotalProducts from './TotalProducts';
 
@@ -32,13 +32,6 @@ const WrapperRange = styled.div`
     width: 25%;
 `;
 
-
-const WrapperFilter = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-family: "Source Sans Pro";
-`;
 
 
 
@@ -73,12 +66,14 @@ const Filtros = () => {
                     </WrapperRange> */}
 
                 <WrapperFilter>
-                    <h3> Sort by </h3>
+                    <h3> Sort by: </h3>
                     <BtnFilter onClick={() => dispatch(handleChangePrice('Lowest'))} className={filters.price === "Lowest" ? "activeFilter" : ""}> Lowest price </BtnFilter>
                     <BtnFilter onClick={() => dispatch(handleChangePrice('Highest'))} className={filters.price === "Highest" ? "activeFilter" : ""}> Highest price </BtnFilter>
                 </WrapperFilter>
 
-                <Paginate />
+            
+                   <Paginate />
+           
             </div>
 
 

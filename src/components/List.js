@@ -14,28 +14,17 @@ const ContainerCards = styled.ul`
 
 
 const List = ({list}) => {
-    const {state, dispatch} = useContext(Context);
+    const {state} = useContext(Context);
     const {user} = state;
 
-
-
-    const reedemItem = (id, cost) => {
-        reedemProduct(id).then(resp => {
-           if(resp.status === 200) {
-               let newUserPoints = user.points - cost; 
-               dispatch(updateUserPoints(newUserPoints));
-
-           }
-        });
-    }
 
     return (
        <ContainerCards>
           {list && list.length > 0 ?
             list.map( (p, i) => <li className="item-card" key={i}> 
-            <Card product={p} reedemProduct={reedemItem} user={user} />
+            <Card product={p}  user={user} />
             </li>)
-            : <h3> NO HAY PRODUCTOS </h3>}
+            : <h3> No results found </h3>}
        </ContainerCards>
 
 

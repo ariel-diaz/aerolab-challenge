@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Logo from '../assets/images/aerolab-logo.svg';
 import Coin from '../assets/icons/coin.svg';
 import { Context } from '../context/Context';
+import { Link } from 'react-router-dom';
 
 const Navbar = styled.nav`
     display: flex;
@@ -30,6 +31,7 @@ const UserName = styled.span`
     color:#616161;
     text-align:left;
     margin-right: 10px;
+    font-weight: 600;
 `;
 
 const Points = styled.div`
@@ -50,22 +52,43 @@ const PointText = styled.span`
     padding: 0 20px;
 `;
 
+const HistoryText = styled.span `
+    font-family: "Source Sans Pro";
+    font-size: 18px;
+    color:#616161;
+    text-align:left;
+    margin: 0 10px;
+`;
+
+
+
+
 
 const Nav = () => {
+
     const { state } = useContext(Context);
+    const { isLoading, user } = state;
     return (
-                <Navbar>
-                    <NavbarLeft>
-                        <img src={Logo} alt="Aerolab Logo" />
-                    </NavbarLeft>
-                    <NavbarRight>
-                        <UserName> {state && state.user.name}</UserName>
-                        <Points>
-                            <PointText> {state &&  state.user.points} </PointText>
-                            <img src={Coin} alt="Coins" />
-                        </Points>
-                    </NavbarRight>
-                </Navbar>
+        <Navbar>
+            <NavbarLeft>
+                <Link to={'/'}>
+                   <img src={Logo} href="/" alt="Aerolab Logo" />
+                </Link>
+            </NavbarLeft>
+            {!isLoading &&
+                <NavbarRight>
+                    <UserName className="animated fadeIn"> {user.name}</UserName>
+                  
+                  {(user.redeemHistory.length > 0)
+                     && <Link to={'history'}> 
+                        <HistoryText> My History  </HistoryText>
+                     </Link>}
+                    <Points>
+                        <PointText> {user.points} </PointText>
+                        <img src={Coin} alt="Coins" />
+                    </Points>
+                </NavbarRight>}
+        </Navbar>
     )
 
 }

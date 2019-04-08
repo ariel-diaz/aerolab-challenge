@@ -9,9 +9,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Detalle from './pages/Detalle';
 import HistoryUser from './components/HistoryUser';
 
-const Wrapper = styled.div`
-    margin: 0 40px;
-`;
 
 
 const Banner = styled.div`
@@ -41,7 +38,6 @@ const App = () => {
   return (
     <Router>
       <ContextProvider>
-        <Wrapper>
             <Header>
               <Nav />
               <Banner>
@@ -54,7 +50,6 @@ const App = () => {
             <Route path="/history" component={HistoryUser} />
             <Route path="/detallePedido" component={Detalle} />
           </WrapperContent>
-        </Wrapper>
       </ContextProvider>
     </Router>
   );

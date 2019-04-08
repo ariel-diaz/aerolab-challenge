@@ -5,6 +5,7 @@ import { Context, paginateResult } from '../context/Context';
 import {updateListResult , cleanPagination} from '../context/reducer';
 import Filtros from './../components/Filtros';
 import Footer from './../components/Footer';
+import Loading from './../components/Loading';
 
 
 
@@ -57,7 +58,7 @@ const Main = () => {
     return (
         <>
             {isLoading ?
-                "Loading..."
+                <Loading />
                 : <>
                     <Filtros />
                     <List list={listResult.result} user={user} />
